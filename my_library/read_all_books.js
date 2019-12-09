@@ -1,13 +1,5 @@
-const mongoose = require("mongoose");
-const my_db = "my_library";
-const Book = require('./models/book').Book;
-
-mongoose.connect(`mongodb://localhost/${my_db}`, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-});
-
-const db = mongoose.connection;
+const Book = require("./models/book").Book;
+const db = require("./my_db").db;
 
 db.on("error", () =>{
     console.log('db connection error');
