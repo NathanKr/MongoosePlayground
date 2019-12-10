@@ -1,12 +1,21 @@
 const mongoose = require("mongoose");
 const my_db = "my_library";
 
-mongoose.connect(`mongodb://localhost/${my_db}`, {
+mongoose.connect(`mongodb://127.0.0.1/${my_db}`, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
 
 const db = mongoose.connection;
 
-module.exports.db = db;
+// --- this can be issued many times
+db.on("error", () =>{
+    console.log('db connection error');
+});
+
+// --- this will be issued once
+db.once("open", function() {
+  console.log('db is connected successfully');
+});
+
 
