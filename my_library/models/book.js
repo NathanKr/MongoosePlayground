@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 
-// --- define a schema
+// --- define a schema 
+// --- add validation here !!!1
   const bookSchema = new mongoose.Schema({
     name: String ,
     pages : Number,
